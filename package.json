@@ -12,7 +12,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.4.1",
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

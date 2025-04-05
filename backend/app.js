@@ -3,7 +3,7 @@ const cors = require("cors");
 const toolsRoutes = require("./routes/tools");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 // Middleware
 app.use(cors());

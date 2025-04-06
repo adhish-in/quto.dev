@@ -25,26 +25,32 @@ const URLDecoder = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-6 text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-white via-indigo-50 to-white p-6 text-gray-800">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">URL Decoder</h1>
+        <h1 className="text-3xl font-bold mb-6 text-indigo-600 text-center">🔓 URL Decoder</h1>
 
-        <Card>
+        <Card className="shadow-lg rounded-xl">
           <div className="p-4 flex flex-col gap-4">
             <textarea
               rows={4}
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
               placeholder="Enter text to decode..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
 
-            <Button onClick={handleDecode}>Decode</Button>
+            <Button
+              type="primary"
+              className="bg-indigo-600 hover:bg-indigo-700 transition-all w-full rounded"
+              onClick={handleDecode}
+            >
+              Decode
+            </Button>
 
             {decoded && (
-              <div className="bg-gray-100 p-3 rounded-md">
-                <strong>Decoded Output:</strong>
-                <p className="break-all mt-1">{decoded}</p>
+              <div className="bg-indigo-50 p-4 rounded-md border border-indigo-200">
+                <strong className="text-indigo-700">Decoded Output:</strong>
+                <p className="break-all mt-2 text-gray-800">{decoded}</p>
               </div>
             )}
           </div>

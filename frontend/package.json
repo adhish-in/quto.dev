@@ -19,5 +19,9 @@
   "dependencies": {
     "react-scripts": "^5.0.1",
     "serve": "^14.2.4"
+  },
+  "engines": {
+    "npm": "10.2.3",
+    "node": "20.10.0"
   }
 }

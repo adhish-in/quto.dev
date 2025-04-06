@@ -14,6 +14,7 @@ const tools = [
     category: "String",
     items: [
       { name: "Remove Line Breaks", path: "/tools/remove-line-breaks" },
+      { name: "Render String", path: "/tools/render-string" },
     ],
   },
 ];
@@ -40,7 +41,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-indigo-50 to-white py-10 px-4 text-gray-800">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 text-indigo-700">
-          🎨 Welcome to <span className="text-pink-500">Quto</span> - Quick Tools for Developers
+          🎨 Welcome to <span className="text-pink-500">Quto.dev</span> - Quick Tools for Developers
         </h1>
 
         <div className="mb-8">

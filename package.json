@@ -1,9 +1,7 @@
 {
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "cd backend && nodemon app.js",
-    "server": "cd backend && nodemon app.js",
-    "client": "cd frontend && npm run start"
+    "dev": "concurrently \"cd backend && nodemon app.js\" \"cd frontend && npm run dev\"",
+    "start": "cd backend && nodemon app.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

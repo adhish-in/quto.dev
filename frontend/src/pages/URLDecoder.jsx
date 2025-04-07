@@ -4,23 +4,49 @@ import { Button, Card } from "antd";
 const URLDecoder = () => {
   const [input, setInput] = useState("");
   const [decoded, setDecoded] = useState("");
+  const [queryParams, setQueryParams] = useState([]);
 
   const handleDecode = async () => {
     try {
+      const queryStart = input.indexOf("?");
+      const basePart = queryStart >= 0 ? input.substring(0, queryStart) : input;
+      const queryString = queryStart >= 0 ? input.substring(queryStart + 1) : "";
+
       const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/tools/url-decode`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: input }),
+        body: JSON.stringify({ text: basePart }),
       });
 
       const data = await response.json();
       if (data.result) {
-        setDecoded(data.result);
+        const fullOutput = queryString ? `${data.result}?${queryString}` : data.result;
+        setDecoded(fullOutput);
+        setQueryParams(parseRawQueryParams(queryString));
       } else {
         setDecoded("Error: " + data.error);
+        setQueryParams([]);
       }
     } catch (error) {
       setDecoded("Error: Unable to connect to server.");
+      setQueryParams([]);
+    }
+  };
+
+  const parseRawQueryParams = (queryString) => {
+    if (!queryString) return [];
+    return queryString.split("&").map((param) => {
+      const [key, value = ""] = param.split("=");
+      return [key, value];
+    });
+  };
+
+  const isURL = (str) => {
+    try {
+      const url = new URL(str);
+      return url.protocol === "http:" || url.protocol === "https:";
+    } catch {
+      return false;
     }
   };
 
@@ -51,6 +77,35 @@ const URLDecoder = () => {
               <div className="bg-indigo-50 p-4 rounded-md border border-indigo-200">
                 <strong className="text-indigo-700">Decoded Output:</strong>
                 <p className="break-all mt-2 text-gray-800">{decoded}</p>
+              </div>
+            )}
+            {queryParams.length > 0 && (
+              <div className="bg-white p-4 mt-4 border border-gray-300 rounded-md">
+                <strong className="text-indigo-600 mb-2 block">Query Parameters:</strong>
+                <div className="max-h-64 overflow-auto pr-2">
+                  <ul className="list-disc list-inside space-y-1">
+                    {queryParams.map(([key, value], idx) => {
+                      const decodedValue = decodeURIComponent(value);
+                      return (
+                        <ol key={idx} className="break-all">
+                          <span className="font-medium">{key}:</span>{" "}
+                          {isURL(decodedValue) ? (
+                            <a
+                              href={decodedValue}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 underline"
+                            >
+                              {decodedValue}
+                            </a>
+                          ) : (
+                            decodedValue
+                          )}
+                        </ol>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             )}
           </div>

@@ -12,10 +12,11 @@ const tools = [
     ],
   },
   {
-    category: "String",
+    category: "TEXT",
     items: [
       { name: "Remove Line Breaks", path: "/tools/remove-line-breaks" },
       { name: "Render String", path: "/tools/render-string" },
+      { name: "Render Markdown", path: "/tools/render-markdown" },
     ],
   },
 ];

@@ -6,6 +6,7 @@ import "./index.css";
 import RemoveLineBreaks from "./pages/RemoveLineBreaks";
 import RenderString from "./pages/RenderString";
 import RenderMarkdown from "./pages/RenderMarkdown";
+import QueryParamEditor from "./pages/QueryParamEditor";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/tools/remove-line-breaks" element={<RemoveLineBreaks />} />
         <Route path="/tools/render-string" element={<RenderString />} />
         <Route path="/tools/render-markdown" element={<RenderMarkdown />} />
+        <Route path="/tools/query-param-editor" element={<QueryParamEditor />} />
       </Routes>
     </Router>
   );

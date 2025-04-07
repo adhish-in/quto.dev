@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { Button, Card } from "antd";
+import { Button, Card, message } from "antd";
 
 const RenderString = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
   const handleRender = () => {
-    const formatted = input.replace(/\\n/g, "\n"); // Replace literal \n with actual newline
+    const formatted = input.replace(/\\n/g, "\n");
     setOutput(formatted);
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(output);
+      message.success("Output copied to clipboard!");
+    } catch (err) {
+      message.error("Failed to copy!");
+    }
   };
 
   return (
@@ -34,9 +43,17 @@ const RenderString = () => {
             </Button>
 
             {output && (
-              <div className="bg-indigo-50 p-4 rounded-md border border-indigo-200 whitespace-pre-wrap">
+              <div className="bg-indigo-50 p-4 rounded-md border border-indigo-200 whitespace-pre-wrap relative">
                 <strong className="text-indigo-700">Output:</strong>
                 <p className="break-all mt-2 text-gray-800">{output}</p>
+
+                <Button
+                  size="small"
+                  className="absolute top-2 right-2 border-indigo-500 text-indigo-600 hover:text-white hover:bg-indigo-600"
+                  onClick={handleCopy}
+                >
+                  Copy
+                </Button>
               </div>
             )}
           </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card } from "antd";
+import Footer from "../components/Footer";
 
 const URLDecoder = () => {
   const [input, setInput] = useState("");
@@ -111,6 +112,7 @@ const URLDecoder = () => {
           </div>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

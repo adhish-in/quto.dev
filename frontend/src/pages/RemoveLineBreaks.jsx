@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Select } from "antd";
+import Footer from "../components/Footer";
 
 const { Option } = Select;
 
@@ -85,6 +86,7 @@ const RemoveLineBreaks = () => {
           </div>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

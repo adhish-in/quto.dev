@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, message } from "antd";
+import Footer from "../components/Footer";
 
 const RenderString = () => {
   const [input, setInput] = useState("");
@@ -59,6 +60,7 @@ const RenderString = () => {
           </div>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

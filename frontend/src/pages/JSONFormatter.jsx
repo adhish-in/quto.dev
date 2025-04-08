@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, message } from "antd";
 import JsonView from "@uiw/react-json-view";
 import { lightTheme } from "@uiw/react-json-view/light";
+import Footer from "../components/Footer";
 
 const JSONFormatter = () => {
   const [input, setInput] = useState("");
@@ -85,6 +86,7 @@ const JSONFormatter = () => {
           </div>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

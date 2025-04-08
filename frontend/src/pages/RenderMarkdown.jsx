@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, message } from "antd";
 import ReactMarkdown from "react-markdown";
+import Footer from "../components/Footer";
 
 const RenderMarkdown = () => {
   const [input, setInput] = useState("");
@@ -57,6 +58,7 @@ const RenderMarkdown = () => {
           </div>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Input, Space, message } from "antd";
+import Footer from "../components/Footer";
 
 const QueryParamEditor = () => {
   const [url, setUrl] = useState("");
@@ -99,6 +100,7 @@ const QueryParamEditor = () => {
           )}
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

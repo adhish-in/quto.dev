@@ -7,6 +7,13 @@ const Footer = () => (
       >
         🎨 Quto.dev
       </a>{" "}
+      | <a
+        href="/help"
+        rel="noopener noreferrer"
+        className="text-indigo-600 hover:underline"
+      >
+        Help
+      </a>{" "}
       | {" "}
       <a
         href="https://github.com/adhish-in/quto.dev"

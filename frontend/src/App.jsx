@@ -8,6 +8,7 @@ import RenderString from "./pages/RenderString";
 import RenderMarkdown from "./pages/RenderMarkdown";
 import QueryParamEditor from "./pages/QueryParamEditor";
 import JSONFormatter from "./pages/JSONFormatter";
+import Help from "./pages/Help";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/tools/render-markdown" element={<RenderMarkdown />} />
         <Route path="/tools/query-param-editor" element={<QueryParamEditor />} />
         <Route path="/tools/json-formatter" element={<JSONFormatter />} />
+        <Route path="/help" element={<Help />} />
       </Routes>
     </Router>
   );

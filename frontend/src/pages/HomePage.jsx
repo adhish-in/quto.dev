@@ -72,7 +72,7 @@ const HomePage = () => {
                 <Link key={tool.name} to={tool.path}>
                   <Card
                     hoverable
-                    className={`rounded-lg shadow-md p-4 transition-all duration-300 ${colorClasses[(categoryIndex + toolIndex) % colorClasses.length]}`}
+                    className={`rounded-lg shadow-md p-1 transition-all duration-300 text-sm ${colorClasses[(categoryIndex + toolIndex) % colorClasses.length]}`}
                   >
                     <p className="text-lg font-semibold">{tool.name}</p>
                   </Card>

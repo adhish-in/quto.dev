@@ -19,6 +19,12 @@ const tools = [
       { name: "Render Markdown", path: "/tools/render-markdown" },
     ],
   },
+  {
+    category: "JSON",
+    items: [
+      { name: "JSON Formatter", path: "/tools/json-formatter" }
+    ]
+  },
 ];
 
 const colorClasses = [

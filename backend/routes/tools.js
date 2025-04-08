@@ -34,7 +34,7 @@ router.post("/json-formatter", (req, res) => {
     const formatted = JSON.stringify(parsed, null, 2);
     res.json({ result: formatted });
   } catch (err) {
-    res.status(400).json({ error: "Invalid JSON: " + err.message });
+    res.json({ error: "Invalid JSON: " + err.message });
   }
 });
 

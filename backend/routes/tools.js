@@ -25,5 +25,17 @@ router.post("/remove-line-breaks", (req, res) => {
   res.json({ result });
 });
 
+router.post("/json-formatter", (req, res) => {
+  const { text } = req.body;
+  if (!text) return res.status(400).json({ error: "Text is required" });
+
+  try {
+    const parsed = JSON.parse(text);
+    const formatted = JSON.stringify(parsed, null, 2);
+    res.json({ result: formatted });
+  } catch (err) {
+    res.status(400).json({ error: "Invalid JSON: " + err.message });
+  }
+});
 
 module.exports = router;

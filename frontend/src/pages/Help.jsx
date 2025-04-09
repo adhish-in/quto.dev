@@ -37,6 +37,13 @@ const groupedTools = {
       path: "/tools/render-markdown",
     },
   ],
+  HTTP: [
+    {
+      name: "🌐 API Tester",
+      description: "Send HTTP requests like GET, POST, PUT and view responses. A mini Postman!",
+      path: "/tools/api-tester",
+    },
+  ],
   JSON: [
     {
       name: "🧾 JSON Formatter",

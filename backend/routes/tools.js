@@ -38,4 +38,31 @@ router.post("/json-formatter", (req, res) => {
   }
 });
 
+router.post("/api-tester", async (req, res) => {
+  const { url, method = "GET", headers = {}, body } = req.body;
+
+  if (!url) return res.status(400).json({ error: "URL is required" });
+
+  try {
+    const fetch = (await import("node-fetch")).default;
+    const response = await fetch(url, {
+      method,
+      headers,
+      body: ["POST", "PUT", "PATCH", "DELETE"].includes(method.toUpperCase()) ? body : undefined,
+    });
+
+    const contentType = response.headers.get("content-type") || "";
+    const text = await response.text();
+
+    res.status(200).json({
+      status: `${response.status} ${response.statusText}`,
+      contentType,
+      body: contentType.includes("application/json") ? JSON.parse(text) : text,
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
 module.exports = router;

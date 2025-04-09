@@ -20,6 +20,12 @@ const tools = [
     ],
   },
   {
+    category: "HTTP",
+    items: [
+      { name: "API Tester", path: "/tools/api-tester" }
+    ]
+  },
+  {
     category: "JSON",
     items: [
       { name: "JSON Formatter", path: "/tools/json-formatter" }

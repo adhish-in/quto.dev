@@ -1,4 +1,5 @@
 const express = require("express");
+const nodemailer = require("nodemailer");
 const router = express.Router();
 
 router.post("/url-encode", (req, res) => {
@@ -61,6 +62,34 @@ router.post("/api-tester", async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+
+router.post("/smtp-tester", async (req, res) => {
+  const { host, port, secure, user, pass, to, subject, text } = req.body;
+
+  if (!host || !port || !user || !pass || !to || !subject || !text) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      host,
+      port: Number(port),
+      secure: secure === true || secure === "true", // true for 465, false for 587
+      auth: { user, pass },
+    });
+
+    const info = await transporter.sendMail({
+      from: user,
+      to,
+      subject,
+      text,
+    });
+
+    res.json({ result: `Email sent: ${info.messageId}` });
+  } catch (error) {
+    res.status(500).json({ error: `Failed to send email: ${error.message}` });
   }
 });
 

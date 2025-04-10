@@ -31,6 +31,12 @@ const tools = [
       { name: "JSON Formatter", path: "/tools/json-formatter" }
     ]
   },
+  {
+    category: "SMTP",
+    items: [
+      { name: "SMTP Tester", path: "/tools/smtp-tester" }
+    ]
+  }
 ];
 
 const colorClasses = [

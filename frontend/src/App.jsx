@@ -9,6 +9,7 @@ import RenderMarkdown from "./pages/RenderMarkdown";
 import QueryParamEditor from "./pages/QueryParamEditor";
 import JSONFormatter from "./pages/JSONFormatter";
 import ApiTester from "./pages/APITester";
+import SMTPTester from "./pages/SMTPTester";
 import Help from "./pages/Help";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/tools/query-param-editor" element={<QueryParamEditor />} />
         <Route path="/tools/json-formatter" element={<JSONFormatter />} />
         <Route path="/tools/api-tester" element={<ApiTester />} />
+        <Route path="/tools/smtp-tester" element={<SMTPTester />} />
         <Route path="/help" element={<Help />} />
       </Routes>
     </Router>

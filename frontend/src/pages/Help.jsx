@@ -51,6 +51,13 @@ const groupedTools = {
       path: "/tools/json-formatter",
     },
   ],
+  EMAIL: [
+    {
+      name: "📧 SMTP Tester",
+      description: "Send test emails using SMTP credentials to verify connectivity and authentication.",
+      path: "/tools/smtp-tester",
+    },
+  ],
 };
 
 const Help = () => {

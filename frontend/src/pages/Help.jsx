@@ -58,6 +58,13 @@ const groupedTools = {
       path: "/tools/smtp-tester",
     },
   ],
+  TIME: [
+    {
+      name: "⏱️ Timezone Converter",
+      description: "Convert date & time between different timezones instantly.",
+      path: "/tools/timezone-converter",
+    },
+  ],
 };
 
 const Help = () => {

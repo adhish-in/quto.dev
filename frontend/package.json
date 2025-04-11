@@ -19,6 +19,8 @@
   "dependencies": {
     "@uiw/react-json-view": "^2.0.0-alpha.30",
     "antd": "^5.24.6",
+    "dayjs": "^1.11.13",
+    "moment-timezone": "^0.5.48",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-markdown": "^10.1.0",

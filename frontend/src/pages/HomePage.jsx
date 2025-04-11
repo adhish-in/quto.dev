@@ -36,6 +36,12 @@ const tools = [
     items: [
       { name: "SMTP Tester", path: "/tools/smtp-tester" }
     ]
+  },
+  {
+    category: "TIME",
+    items: [
+      { name: "Timezone Converter", path: "/tools/timezone-converter" }
+    ]
   }
 ];
 

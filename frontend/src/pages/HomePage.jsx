@@ -80,25 +80,59 @@ const HomePage = () => {
           />
         </div>
 
-        {filteredTools.map((category, categoryIndex) => (
-          <div key={category.category} className="mb-10">
-            <h2 className="text-2xl font-semibold mb-4 border-b pb-2 border-gray-300 text-indigo-600">
-              {category.category}
-            </h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {category.items.map((tool, toolIndex) => (
-                <Link key={tool.name} to={tool.path}>
-                  <Card
-                    hoverable
-                    className={`rounded-md shadow p-0.1 transition-all duration-300 text-xs ${colorClasses[(categoryIndex + toolIndex) % colorClasses.length]}`}
-                  >
-                    <p className="text-lg font-semibold">{tool.name}</p>
-                  </Card>
-                </Link>
+        {(() => {
+          const multiItemCategories = filteredTools.filter(cat => cat.items.length > 1);
+          const singleItemCategories = filteredTools.filter(cat => cat.items.length === 1);
+
+          return (
+            <>
+              {multiItemCategories.map((category, categoryIndex) => (
+                <div key={category.category} className="mb-10">
+                  <h2 className="text-2xl font-semibold mb-4 border-b pb-2 border-gray-300 text-indigo-600">
+                    {category.category}
+                  </h2>
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {category.items.map((tool, toolIndex) => (
+                      <Link key={tool.name} to={tool.path}>
+                        <Card
+                          hoverable
+                          className={`rounded-md shadow p-0.1 transition-all duration-300 text-xs ${colorClasses[(categoryIndex + toolIndex) % colorClasses.length]}`}
+                        >
+                          <p className="text-lg font-semibold">{tool.name}</p>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </div>
-          </div>
-        ))}
+
+              {singleItemCategories.length > 0 && (
+                <div className="mb-10">
+                  <h2 className="text-2xl font-semibold mb-4 border-b pb-2 border-gray-300 text-indigo-600">
+                    OTHER TOOLS
+                  </h2>
+                  <div className="flex flex-wrap gap-4">
+                    {singleItemCategories.map((category, index) => {
+                      const tool = category.items[0];
+                      return (
+                        <Link key={tool.name} to={tool.path}>
+                          <Card
+                            hoverable
+                            className={`rounded-md shadow p-0.1 transition-all duration-300 text-xs ${colorClasses[index % colorClasses.length]}`}
+                          >
+                            <p className="text-lg font-semibold">{tool.name}</p>
+                            <p className="text-sm opacity-70">{category.category}</p>
+                          </Card>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </>
+          );
+        })()}
+
 
         {filteredTools.length === 0 && (
           <div className="text-center text-gray-500">No tools found.</div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quto.dev/sitemap.xml

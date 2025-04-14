@@ -44,6 +44,9 @@ function App() {
         <Route path="/tools/render-markdown" element={<RenderMarkdown />} />
         <Route path="/tools/query-param-editor" element={<QueryParamEditor />} />
         <Route path="/tools/json-formatter" element={<JSONFormatter />} />
+        <Route path="/tools/api-tester" element={<ApiTester />} />
+        <Route path="/tools/smtp-tester" element={<SMTPTester />} />
+        <Route path="/tools/timezone-converter" element={<TimezoneConverter />} />
         <Route path="/help" element={<Help />} />
       </Routes>
     </Router>

@@ -12,16 +12,20 @@ const ImageResizer = () => {
 
   const handleImageUpload = (info) => {
     const file = info?.file;
-
+  
     if (!file) {
       console.log("File not found.");
       return message.error("No file detected.");
     }
-
+  
     if (!["image/jpeg", "image/png"].includes(file.type)) {
       return message.error("Only JPG and PNG files are supported.");
     }
-
+  
+    if (file.size > 5 * 1024 * 1024) {
+      return message.error("File size should be under 5MB.");
+    }
+  
     const img = new Image();
     img.onload = () => {
       setOriginalDimensions({ width: img.width, height: img.height });
@@ -31,7 +35,6 @@ const ImageResizer = () => {
     };
     img.src = URL.createObjectURL(file);
   };
-
 
   const handleResize = async () => {
     if (!imageFile) return message.error("Upload an image first.");

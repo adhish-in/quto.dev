@@ -65,6 +65,13 @@ const groupedTools = {
       path: "/tools/timezone-converter",
     },
   ],
+  IMAGE: [
+    {
+      name: "📐 Image Resizer",
+      description: "Resize images to specific dimensions or scale them proportionally.",
+      path: "/tools/image-resizer",
+    },
+  ],
 };
 
 const Help = () => {

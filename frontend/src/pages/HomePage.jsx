@@ -42,7 +42,13 @@ const tools = [
     items: [
       { name: "Timezone Converter", path: "/tools/timezone-converter" }
     ]
-  }
+  },
+  {
+    category: "IMAGE",
+    items: [
+      { name: "Image Resizer", path: "/tools/image-resizer" }
+    ]
+  },
 ];
 
 const colorClasses = [

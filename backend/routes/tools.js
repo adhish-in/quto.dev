@@ -1,5 +1,8 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
+const multer = require("multer");
+const sharp = require("sharp");
+const upload = multer();
 const router = express.Router();
 
 router.post("/url-encode", (req, res) => {
@@ -90,6 +93,35 @@ router.post("/smtp-tester", async (req, res) => {
     res.json({ result: `Email sent: ${info.messageId}` });
   } catch (error) {
     res.status(500).json({ error: `Failed to send email: ${error.message}` });
+  }
+});
+
+router.post("/image-resize", upload.single("image"), async (req, res) => {
+  const { width, height, maintainRatio } = req.body;
+  const file = req.file;
+
+  if (!file) return res.status(400).send("No image uploaded");
+
+  let w = parseInt(width);
+  let h = parseInt(height);
+
+  try {
+    let image = sharp(file.buffer);
+    const metadata = await image.metadata();
+
+    if (maintainRatio === "true") {
+      const aspect = metadata.width / metadata.height;
+      if (width && !height) h = Math.round(w / aspect);
+      else if (height && !width) w = Math.round(h * aspect);
+    }
+
+    const outputFormat = file.mimetype === "image/png" ? "png" : "jpeg";
+    const resized = await image.resize(w, h)[outputFormat]().toBuffer();
+
+    res.set("Content-Type", `image/${outputFormat}`);
+    res.send(resized);
+  } catch (err) {
+    res.status(500).send("Error resizing image");
   }
 });
 

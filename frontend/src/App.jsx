@@ -11,6 +11,7 @@ import JSONFormatter from "./pages/JSONFormatter";
 import ApiTester from "./pages/APITester";
 import SMTPTester from "./pages/SMTPTester";
 import TimezoneConverter from "./pages/TimeZoneConverter";
+import ImageResizer from "./pages/ImageResizer";
 import Help from "./pages/Help";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
@@ -47,6 +48,7 @@ function App() {
         <Route path="/tools/api-tester" element={<ApiTester />} />
         <Route path="/tools/smtp-tester" element={<SMTPTester />} />
         <Route path="/tools/timezone-converter" element={<TimezoneConverter />} />
+        <Route path="/tools/image-resizer" element={<ImageResizer />} />
         <Route path="/help" element={<Help />} />
       </Routes>
     </Router>
